@@ -9,7 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Roboto',sans-serif;
-  background: url("https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599834.jpg") center/cover no-repeat fixed;
+  background:#111;
   color:#fff;
   text-align:center;
   overflow-x:hidden;
@@ -21,43 +21,42 @@ header{
   font-size:28px;
   font-weight:700;
   font-family:'Orbitron', sans-serif;
-  background: linear-gradient(90deg,#00f,#0ff,#0f0);
+  background: linear-gradient(90deg,#ff0000,#ff4444,#ff0000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* کادر تصویر مرحله */
+/* کادر تصویر مرحله (مربع و بزرگ) */
 .top-box{
-  width:90%;
-  max-width:400px;
-  height:250px;
+  width:90vw;
+  max-width:500px;
+  height:90vw; /* مربعی */
+  max-height:500px;
   margin:0 auto 30px auto;
   border-radius:25px;
   overflow:hidden;
-  border:3px solid #0ff;
-  box-shadow:0 0 20px #0ff inset,0 0 40px #0ff;
+  border:3px solid #ff0000;
+  box-shadow:0 0 20px #ff0000 inset,0 0 40px #ff0000;
   transition: background-image 0.5s ease;
-  background-size: contain;
+  background-size: cover; /* کاملاً پر شود */
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
 }
-
-/* لایه نیمه شفاف برای متن روی تصویر */
 .top-box::after{
   content:'';
   position:absolute;
   top:0; left:0;
   width:100%; height:100%;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.4);
 }
 
 /* مرحله‌ها */
 .step{
   display:none;
-  padding:15px;
+  padding:10px;
   opacity:0;
-  transform:translateY(30px);
+  transform:translateY(20px);
   transition: all 0.5s ease;
 }
 .step.active{
@@ -68,9 +67,9 @@ header{
 h2{
   margin-bottom:20px;
   font-family:'Orbitron',sans-serif;
-  color:#0ff;
-  text-shadow:0 0 10px #000;
-  background: rgba(0,0,0,0.5);
+  color:#ff0000;
+  text-shadow:0 0 5px #000,0 0 10px #ff0000,0 0 20px #ff0000;
+  background: rgba(0,0,0,0.6);
   display:inline-block;
   padding:5px 15px;
   border-radius:12px;
@@ -90,23 +89,23 @@ h2{
   font-size:18px;
   border-radius:16px;
   cursor:pointer;
-  border:2px solid #0ff;
+  border:2px solid #ff0000;
   background: linear-gradient(145deg,#111,#222);
-  color:#fff;
-  font-weight:500;
+  color:#ff0000;
+  font-weight:600;
+  text-shadow:0 0 3px #000,0 0 5px #ff0000;
   transition:0.3s all;
-  text-shadow: 0 0 5px #000;
 }
 .option:hover{
   transform:scale(1.1);
-  background: linear-gradient(145deg,#0ff,#0cc);
+  background: linear-gradient(145deg,#ff0000,#cc0000);
   color:#000;
 }
 .option.selected{
-  background:#0ff;
+  background:#ff0000;
   color:#000;
-  border-color:#0ff;
-  box-shadow:0 0 25px #0ff;
+  border-color:#ff0000;
+  box-shadow:0 0 20px #ff0000;
 }
 
 /* دکمه ادامه */
@@ -119,15 +118,16 @@ button{
   cursor:pointer;
   display:none;
   color:#000;
-  background: linear-gradient(135deg,#00ffff,#00ccff,#00ffff);
-  box-shadow:0 0 15px #00ffff,0 0 30px #0ff inset;
-  font-weight:600;
+  background: linear-gradient(135deg,#ff0000,#cc0000,#ff0000);
+  box-shadow:0 0 15px #ff0000,0 0 30px #ff0000 inset;
+  font-weight:700;
+  text-shadow:0 0 5px #000,0 0 10px #ff0000;
   transition:0.3s all;
 }
 button.show{display:inline-block;}
 button:hover{
   transform:scale(1.05);
-  box-shadow:0 0 25px #0ff,0 0 50px #0ff inset;
+  box-shadow:0 0 25px #ff0000,0 0 50px #ff0000 inset;
 }
 
 /* اسلایدر سن */
@@ -144,85 +144,103 @@ input[type=range]{
 input[type=range]::-webkit-slider-thumb{
   -webkit-appearance:none;
   width:36px;height:36px;border-radius:50%;
-  background:#0ff;
+  background:#ff0000;
   cursor:pointer;
-  box-shadow:0 0 15px #0ff;
+  box-shadow:0 0 15px #ff0000;
 }
 input[type=range]::-moz-range-thumb{
   width:36px;height:36px;border-radius:50%;
-  background:#0ff;
+  background:#ff0000;
   cursor:pointer;
-  box-shadow:0 0 15px #0ff;
+  box-shadow:0 0 15px #ff0000;
 }
 #ageDisplay{
   font-size:22px;
   font-weight:700;
-  color:#0ff;
+  color:#ff0000;
   margin-top:10px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   display:inline-block;
   padding:5px 12px;
   border-radius:10px;
+  text-shadow:0 0 5px #000,0 0 10px #ff0000;
 }
 
-/* کادر دانلود */
+/* کادر دانلود حرفه‌ای با ذرات نئون */
 .download-box{
   position:relative;
-  background: linear-gradient(145deg,#0ff,#00ccff);
+  background: linear-gradient(145deg,#ff0000,#cc0000);
   padding:25px 20px;
   border-radius:25px;
-  box-shadow:0 0 40px #0ff,0 0 80px #0ff inset;
+  box-shadow:0 0 40px #ff0000,0 0 80px #ff0000 inset;
   margin:30px auto;
   text-align:center;
   overflow:hidden;
   transition:0.3s all;
-}
-.download-box:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 50px #0ff,0 0 100px #0ff inset;
 }
 .download-box p{
   font-size:18px;
   font-weight:700;
   margin-bottom:20px;
   color:#000;
-  text-shadow:0 0 5px #fff;
-  background: rgba(255,255,255,0.2);
+  text-shadow:0 0 5px #fff,0 0 10px #ff0000;
+  background: rgba(0,0,0,0.5);
   display:inline-block;
   padding:5px 15px;
   border-radius:12px;
 }
 .download-btn{
-  background:#fff;
-  color:#0ff;
+  background:#000;
+  color:#ff0000;
   padding:14px 40px;
   font-size:18px;
   border-radius:14px;
   text-decoration:none;
   display:inline-block;
   font-weight:700;
-  box-shadow:0 0 25px #0ff;
+  box-shadow:0 0 25px #ff0000;
   transition:0.3s all;
   position:relative;
   z-index:2;
+  text-shadow:0 0 5px #000,0 0 10px #ff0000;
 }
 .download-btn:hover{
-  background:#0cc;
+  background:#ff0000;
   color:#000;
-  box-shadow:0 0 35px #0ff,0 0 70px #0ff inset;
+  box-shadow:0 0 35px #ff0000,0 0 70px #ff0000 inset;
 }
 
-/* ریسپانسیو موبایل */
-@media(max-width:480px){
-  header{font-size:24px;padding:15px;}
-  .top-box{height:180px;border-radius:20px;}
-  .option{width:70px;height:70px;line-height:70px;font-size:16px;}
-  input[type=range]{width:95%;}
-  #ageDisplay{font-size:20px;}
-  button, .download-btn{padding:12px 35px;font-size:16px;}
-  .download-box{padding:20px;}
-  .download-box p{font-size:16px;}
+/* ذرات نئون متحرک */
+.particles{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:1;
 }
+.particles span{
+  position:absolute;
+  display:block;
+  width:10px; height:10px;
+  background:#ff0000;
+  border-radius:50%;
+  animation:particleMove linear infinite;
+  opacity:0.8;
+}
+.particles span:nth-child(1){top:10%; left:20%; animation-duration:6s;}
+.particles span:nth-child(2){top:30%; left:50%; animation-duration:8s;}
+span:nth-child(3){top:60%; left:80%; animation-duration:5s;}
+span:nth-child(4){top:80%; left:40%; animation-duration:7s;}
+span:nth-child(5){top:50%; left:10%; animation-duration:6.5s;}
+@keyframes particleMove{
+  0%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(120px,150px) scale(1.5);}
+  100%{transform:translate(-120px,300px) scale(1);}
+}
+
+/* فقط موبایل */
+@media(min-width:481px){body{display:none;}}
 </style>
 </head>
 <body>
@@ -263,6 +281,9 @@ input[type=range]::-moz-range-thumb{
 <div class="step" id="step4">
   <h2>4/4</h2>
   <div class="download-box">
+    <div class="particles">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
     <p>برای اجرای بازی، فایل بازی را دانلود کنید</p>
     <a class="download-btn" href="https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/Game_sxs_1.apk" download>دانلود بازی</a>
   </div>
@@ -274,7 +295,6 @@ function selectOption(el,step){
   el.classList.add('selected');
   document.getElementById('btn'+step).classList.add('show');
 }
-
 function nextStep(step,img){
   const current=document.querySelector('.step.active');
   current.classList.remove('active');
@@ -283,13 +303,11 @@ function nextStep(step,img){
     document.getElementById('topBox').style.backgroundImage = 'url('+img+')';
   },150);
 }
-
 function updateAge(val){
   document.getElementById('ageDisplay').innerText=val+" سال";
   if(val>=16 && val<=70){document.getElementById('btn3').classList.add('show');}
   else{document.getElementById('btn3').classList.remove('show');}
 }
-
 // تصویر مرحله اول
 document.getElementById('topBox').style.backgroundImage = 'url(https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936111855455636287.jpg)';
 </script>
