@@ -30,7 +30,7 @@ header{
 .top-box{
   width:90vw;
   max-width:500px;
-  height:90vw; /* مربعی */
+  height:90vw;
   max-height:500px;
   margin:0 auto 30px auto;
   border-radius:25px;
@@ -38,7 +38,7 @@ header{
   border:3px solid #ff0000;
   box-shadow:0 0 20px #ff0000 inset,0 0 40px #ff0000;
   transition: background-image 0.5s ease;
-  background-size: cover; /* کاملاً پر شود */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
@@ -106,28 +106,6 @@ h2{
   color:#000;
   border-color:#ff0000;
   box-shadow:0 0 20px #ff0000;
-}
-
-/* دکمه ادامه */
-button{
-  margin-top:20px;
-  padding:14px 40px;
-  font-size:18px;
-  border:none;
-  border-radius:14px;
-  cursor:pointer;
-  display:none;
-  color:#000;
-  background: linear-gradient(135deg,#ff0000,#cc0000,#ff0000);
-  box-shadow:0 0 15px #ff0000,0 0 30px #ff0000 inset;
-  font-weight:700;
-  text-shadow:0 0 5px #000,0 0 10px #ff0000;
-  transition:0.3s all;
-}
-button.show{display:inline-block;}
-button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 25px #ff0000,0 0 50px #ff0000 inset;
 }
 
 /* اسلایدر سن */
@@ -252,21 +230,19 @@ span:nth-child(5){top:50%; left:10%; animation-duration:6.5s;}
 <div class="step active" id="step1">
   <h2>1/4<br>سبک بازی خود را انتخاب کنید</h2>
   <div class="options">
-    <div class="option" onclick="selectOption(this,1)">کلاسیک</div>
-    <div class="option" onclick="selectOption(this,1)">ریلکس</div>
-    <div class="option" onclick="selectOption(this,1)">خشن</div>
+    <div class="option" onclick="selectAndNext(this,1,2,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599833.jpg')">کلاسیک</div>
+    <div class="option" onclick="selectAndNext(this,1,2,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599833.jpg')">ریلکس</div>
+    <div class="option" onclick="selectAndNext(this,1,2,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599833.jpg')">خشن</div>
   </div>
-  <button id="btn1" onclick="nextStep(2,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599833.jpg')">ادامه</button>
 </div>
 
 <!-- مرحله 2 -->
 <div class="step" id="step2">
   <h2>2/4<br>جنسیت خود را انتخاب کنید</h2>
   <div class="options">
-    <div class="option" onclick="selectOption(this,2)">مرد</div>
-    <div class="option" onclick="selectOption(this,2)">زن</div>
+    <div class="option" onclick="selectAndNext(this,2,3,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599835.jpg')">مرد</div>
+    <div class="option" onclick="selectAndNext(this,2,3,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599835.jpg')">زن</div>
   </div>
-  <button id="btn2" onclick="nextStep(3,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599835.jpg')">ادامه</button>
 </div>
 
 <!-- مرحله 3 -->
@@ -274,7 +250,9 @@ span:nth-child(5){top:50%; left:10%; animation-duration:6.5s;}
   <h2>3/4<br>سن خود را انتخاب کنید</h2>
   <input type="range" id="age" min="16" max="70" value="25" oninput="updateAge(this.value)">
   <div id="ageDisplay">25 سال</div>
-  <button id="btn3" onclick="nextStep(4,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599836.jpg')">ادامه</button>
+  <div class="options">
+    <div class="option" onclick="selectAndNext(this,3,4,'https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936243320109599836.jpg')">تایید سن</div>
+  </div>
 </div>
 
 <!-- مرحله 4 -->
@@ -290,24 +268,20 @@ span:nth-child(5){top:50%; left:10%; animation-duration:6.5s;}
 </div>
 
 <script>
-function selectOption(el,step){
-  document.querySelectorAll('#step'+step+' .option').forEach(o=>o.classList.remove('selected'));
+function selectAndNext(el,curStep,nextStep,img){
+  document.querySelectorAll('#step'+curStep+' .option').forEach(o=>o.classList.remove('selected'));
   el.classList.add('selected');
-  document.getElementById('btn'+step).classList.add('show');
-}
-function nextStep(step,img){
   const current=document.querySelector('.step.active');
   current.classList.remove('active');
   setTimeout(()=>{
-    document.getElementById('step'+step).classList.add('active');
+    document.getElementById('step'+nextStep).classList.add('active');
     document.getElementById('topBox').style.backgroundImage = 'url('+img+')';
   },150);
 }
 function updateAge(val){
   document.getElementById('ageDisplay').innerText=val+" سال";
-  if(val>=16 && val<=70){document.getElementById('btn3').classList.add('show');}
-  else{document.getElementById('btn3').classList.remove('show');}
 }
+
 // تصویر مرحله اول
 document.getElementById('topBox').style.backgroundImage = 'url(https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936111855455636287.jpg)';
 </script>
