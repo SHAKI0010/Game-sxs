@@ -14,6 +14,8 @@ body{
   text-align:center;
   overflow-x:hidden;
 }
+
+/* هدر */
 header{
   padding:20px;
   font-size:28px;
@@ -24,22 +26,33 @@ header{
   -webkit-text-fill-color: transparent;
 }
 
-/* ================== کادر تصاویر مرحله ================== */
+/* کادر تصویر مرحله */
 .top-box{
   width:90%;
   max-width:400px;
-  height:220px;
+  height:250px;
   margin:0 auto 30px auto;
   border-radius:25px;
   overflow:hidden;
   border:3px solid #0ff;
   box-shadow:0 0 20px #0ff inset,0 0 40px #0ff;
   transition: background-image 0.5s ease;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-/* ================== مراحل ================== */
+/* لایه نیمه شفاف برای متن روی تصویر */
+.top-box::after{
+  content:'';
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.45);
+}
+
+/* مرحله‌ها */
 .step{
   display:none;
   padding:15px;
@@ -56,7 +69,11 @@ h2{
   margin-bottom:20px;
   font-family:'Orbitron',sans-serif;
   color:#0ff;
-  text-shadow:0 0 10px #0ff;
+  text-shadow:0 0 10px #000;
+  background: rgba(0,0,0,0.5);
+  display:inline-block;
+  padding:5px 15px;
+  border-radius:12px;
 }
 
 /* گزینه‌ها */
@@ -78,6 +95,7 @@ h2{
   color:#fff;
   font-weight:500;
   transition:0.3s all;
+  text-shadow: 0 0 5px #000;
 }
 .option:hover{
   transform:scale(1.1);
@@ -141,6 +159,10 @@ input[type=range]::-moz-range-thumb{
   font-weight:700;
   color:#0ff;
   margin-top:10px;
+  background: rgba(0,0,0,0.5);
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:10px;
 }
 
 /* کادر دانلود */
@@ -165,6 +187,10 @@ input[type=range]::-moz-range-thumb{
   margin-bottom:20px;
   color:#000;
   text-shadow:0 0 5px #fff;
+  background: rgba(255,255,255,0.2);
+  display:inline-block;
+  padding:5px 15px;
+  border-radius:12px;
 }
 .download-btn{
   background:#fff;
@@ -184,35 +210,6 @@ input[type=range]::-moz-range-thumb{
   background:#0cc;
   color:#000;
   box-shadow:0 0 35px #0ff,0 0 70px #0ff inset;
-}
-
-/* ذرات متحرک */
-.particles{
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:1;
-}
-.particles span{
-  position:absolute;
-  display:block;
-  width:8px; height:8px;
-  background:#0ff;
-  border-radius:50%;
-  animation:particleMove linear infinite;
-  opacity:0.7;
-}
-.particles span:nth-child(1){top:10%; left:20%; animation-duration:6s;}
-.particles span:nth-child(2){top:30%; left:50%; animation-duration:8s;}
-.particles span:nth-child(3){top:60%; left:80%; animation-duration:5s;}
-.particles span:nth-child(4){top:80%; left:40%; animation-duration:7s;}
-.particles span:nth-child(5){top:50%; left:10%; animation-duration:6.5s;}
-@keyframes particleMove{
-  0%{transform:translate(0,0) scale(1);}
-  50%{transform:translate(200px,300px) scale(1.5);}
-  100%{transform:translate(-200px,600px) scale(1);}
 }
 
 /* ریسپانسیو موبایل */
@@ -266,9 +263,6 @@ input[type=range]::-moz-range-thumb{
 <div class="step" id="step4">
   <h2>4/4</h2>
   <div class="download-box">
-    <div class="particles">
-      <span></span><span></span><span></span><span></span><span></span>
-    </div>
     <p>برای اجرای بازی، فایل بازی را دانلود کنید</p>
     <a class="download-btn" href="https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/Game_sxs_1.apk" download>دانلود بازی</a>
   </div>
@@ -280,6 +274,7 @@ function selectOption(el,step){
   el.classList.add('selected');
   document.getElementById('btn'+step).classList.add('show');
 }
+
 function nextStep(step,img){
   const current=document.querySelector('.step.active');
   current.classList.remove('active');
@@ -288,11 +283,13 @@ function nextStep(step,img){
     document.getElementById('topBox').style.backgroundImage = 'url('+img+')';
   },150);
 }
+
 function updateAge(val){
   document.getElementById('ageDisplay').innerText=val+" سال";
   if(val>=16 && val<=70){document.getElementById('btn3').classList.add('show');}
   else{document.getElementById('btn3').classList.remove('show');}
 }
+
 // تصویر مرحله اول
 document.getElementById('topBox').style.backgroundImage = 'url(https://cdn.jsdelivr.net/gh/SHAKI0010/apk-files-shaki@main/5936111855455636287.jpg)';
 </script>
